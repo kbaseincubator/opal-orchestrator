@@ -121,13 +121,13 @@ class RetrievalService:
             key=lambda x: x[1][0],
             reverse=True,
         )[:top_k]:
-            # Find capability in database
+            # Find capability in database (use first() in case of duplicates)
             result = await self.db.execute(
                 select(Capability)
                 .options(selectinload(Capability.facility).selectinload(Facility.lab))
                 .where(Capability.name == cap_name)
             )
-            capability = result.scalar_one_or_none()
+            capability = result.scalars().first()
 
             if not capability:
                 continue
