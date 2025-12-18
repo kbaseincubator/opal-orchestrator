@@ -1,0 +1,315 @@
+# OPAL Capability Registry Seed Data
+# This file contains initial capability cards based on OPAL network members
+# Note: Some details are approximations - verify with actual facility documentation
+
+labs:
+  - name: "Oak Ridge National Laboratory"
+    institution: "ORNL"
+    location: "Oak Ridge, TN"
+    description: "DOE national laboratory with extensive plant science and microbiology capabilities"
+    urls:
+      website: "https://www.ornl.gov"
+    facilities:
+      - name: "Advanced Plant Phenotyping Laboratory (APPL)"
+        description: "High-throughput automated plant phenotyping facility"
+        capabilities:
+          - name: "Automated Plant Phenotyping"
+            description: "High-throughput imaging and analysis of plant growth, morphology, and stress responses under controlled conditions. Supports drought, salinity, and nutrient stress experiments."
+            modalities:
+              - phenotyping
+              - imaging
+              - stress testing
+            throughput: "Up to 1000 plants per experiment"
+            sample_requirements:
+              plant_size: "Seedlings to 1m tall plants"
+              pot_sizes: ["4-inch", "6-inch", "1-gallon"]
+            constraints:
+              biosafety: "BSL-1"
+              growth_conditions: "Controlled environment chambers"
+            typical_outputs:
+              - "Growth metrics (height, biomass, leaf area)"
+              - "Stress response quantification"
+              - "Time-series imaging data"
+            readiness_level: "Operational"
+            tags:
+              - plants
+              - phenotyping
+              - high-throughput
+              - drought
+              - stress
+
+          - name: "Root Imaging System"
+            description: "Non-destructive root architecture imaging using X-ray CT and rhizotrons"
+            modalities:
+              - imaging
+              - root analysis
+            throughput: "50-100 plants per week"
+            sample_requirements:
+              container: "Specialized rhizotron containers"
+            constraints:
+              imaging_time: "15-30 min per plant for CT"
+            typical_outputs:
+              - "3D root architecture models"
+              - "Root length, branching metrics"
+            readiness_level: "Operational"
+            tags:
+              - roots
+              - imaging
+              - non-destructive
+
+      - name: "Biosciences Division"
+        description: "Microbiology and molecular biology research facilities"
+        capabilities:
+          - name: "Microbial Cultivation and Characterization"
+            description: "Cultivation and phenotypic characterization of diverse microbial strains including plant-associated bacteria"
+            modalities:
+              - cultivation
+              - characterization
+            throughput: "Hundreds of strains per month"
+            sample_requirements:
+              sample_type: "Isolated strains or environmental samples"
+            constraints:
+              biosafety: "BSL-1 and BSL-2"
+            typical_outputs:
+              - "Growth curves"
+              - "Metabolite profiles"
+              - "Strain phenotypes"
+            readiness_level: "Operational"
+            tags:
+              - microbiology
+              - cultivation
+              - bacteria
+
+  - name: "Lawrence Berkeley National Laboratory"
+    institution: "LBNL"
+    location: "Berkeley, CA"
+    description: "DOE national laboratory with strong capabilities in systems biology and bioenergy research"
+    urls:
+      website: "https://www.lbl.gov"
+    facilities:
+      - name: "Joint Genome Institute (JGI)"
+        description: "DOE genomics user facility providing sequencing and analysis capabilities"
+        capabilities:
+          - name: "Whole Genome Sequencing"
+            description: "High-throughput short-read and long-read sequencing for microbial and plant genomes"
+            modalities:
+              - sequencing
+              - genomics
+            throughput: "Thousands of samples per year"
+            sample_requirements:
+              dna_quantity: "1-5 ug high-quality DNA"
+              sample_format: "Purified DNA in TE buffer"
+            constraints:
+              turnaround: "4-8 weeks typical"
+              proposal_required: true
+            typical_outputs:
+              - "Assembled genome sequences"
+              - "Genome annotations"
+              - "Comparative genomics"
+            readiness_level: "Operational"
+            tags:
+              - sequencing
+              - genomics
+              - microbes
+              - plants
+
+          - name: "DNA Synthesis"
+            description: "Custom DNA synthesis for gene and pathway construction"
+            modalities:
+              - synthesis
+              - cloning
+            throughput: "Variable based on complexity"
+            sample_requirements:
+              input: "Sequence designs"
+            constraints:
+              max_length: "Up to 10kb constructs"
+              biosafety_review: true
+            typical_outputs:
+              - "Cloned constructs"
+              - "Verified sequences"
+            readiness_level: "Operational"
+            tags:
+              - DNA synthesis
+              - cloning
+              - genetic engineering
+
+          - name: "Metagenome Sequencing and Analysis"
+            description: "Environmental DNA sequencing and bioinformatic analysis for microbiome studies"
+            modalities:
+              - metagenomics
+              - sequencing
+            throughput: "Hundreds of samples per project"
+            sample_requirements:
+              sample_type: "Environmental DNA or biomass"
+            constraints:
+              minimum_biomass: "Varies by sample type"
+            typical_outputs:
+              - "Taxonomic profiles"
+              - "Functional annotations"
+              - "MAGs (Metagenome-assembled genomes)"
+            readiness_level: "Operational"
+            tags:
+              - metagenomics
+              - microbiome
+              - sequencing
+
+      - name: "ENIGMA"
+        description: "Ecosystems and Networks Integrated with Genes and Molecular Assemblies"
+        capabilities:
+          - name: "Microbial Community Analysis"
+            description: "Comprehensive analysis of microbial community structure and function"
+            modalities:
+              - community analysis
+              - metagenomics
+              - metatranscriptomics
+            throughput: "Project-dependent"
+            typical_outputs:
+              - "Community composition"
+              - "Functional potential"
+              - "Species interactions"
+            readiness_level: "Operational"
+            tags:
+              - microbiome
+              - community
+              - ecology
+
+  - name: "Pacific Northwest National Laboratory"
+    institution: "PNNL"
+    location: "Richland, WA"
+    description: "DOE national laboratory with advanced capabilities in proteomics and metabolomics"
+    urls:
+      website: "https://www.pnnl.gov"
+    facilities:
+      - name: "Environmental Molecular Sciences Laboratory (EMSL)"
+        description: "DOE user facility for environmental and biological research"
+        capabilities:
+          - name: "Proteomics"
+            description: "Comprehensive protein identification and quantification using high-resolution mass spectrometry"
+            modalities:
+              - proteomics
+              - mass spectrometry
+            throughput: "Hundreds of samples per month"
+            sample_requirements:
+              sample_type: "Cell pellets, tissue, or protein extracts"
+              minimum_protein: "50 ug recommended"
+            constraints:
+              proposal_required: true
+            typical_outputs:
+              - "Protein identifications"
+              - "Quantitative abundances"
+              - "Post-translational modifications"
+            readiness_level: "Operational"
+            tags:
+              - proteomics
+              - mass spectrometry
+              - proteins
+
+          - name: "Metabolomics"
+            description: "Small molecule profiling and metabolite identification"
+            modalities:
+              - metabolomics
+              - mass spectrometry
+            throughput: "Variable based on method"
+            sample_requirements:
+              sample_type: "Biological samples, culture supernatants"
+            typical_outputs:
+              - "Metabolite profiles"
+              - "Pathway analysis"
+              - "Biomarker identification"
+            readiness_level: "Operational"
+            tags:
+              - metabolomics
+              - small molecules
+              - mass spectrometry
+
+          - name: "NMR Spectroscopy"
+            description: "Structural characterization of proteins and metabolites by NMR"
+            modalities:
+              - NMR
+              - structural biology
+            throughput: "Limited - expert service"
+            sample_requirements:
+              purity: "High purity required"
+              concentration: "mM concentrations"
+            typical_outputs:
+              - "3D structures"
+              - "Dynamics information"
+              - "Metabolite identification"
+            readiness_level: "Operational"
+            tags:
+              - NMR
+              - structural biology
+              - proteins
+
+  - name: "Argonne National Laboratory"
+    institution: "ANL"
+    location: "Lemont, IL"
+    description: "DOE national laboratory with synthetic biology and computational capabilities"
+    urls:
+      website: "https://www.anl.gov"
+    facilities:
+      - name: "Agile BioFoundry"
+        description: "DOE facility for Design-Build-Test-Learn cycles in biomanufacturing"
+        capabilities:
+          - name: "DBTL Automation"
+            description: "Automated Design-Build-Test-Learn cycles for strain engineering and optimization"
+            modalities:
+              - automation
+              - strain engineering
+              - DBTL
+            throughput: "Thousands of variants per cycle"
+            sample_requirements:
+              input: "Host strain, target pathway design"
+            constraints:
+              organism_support: ["E. coli", "yeast", "Pseudomonas"]
+            typical_outputs:
+              - "Engineered strains"
+              - "Omics data"
+              - "Machine learning models"
+            readiness_level: "Operational"
+            tags:
+              - automation
+              - strain engineering
+              - synthetic biology
+
+          - name: "High-Throughput Screening"
+            description: "Automated screening of strain libraries for desired phenotypes"
+            modalities:
+              - screening
+              - high-throughput
+            throughput: "Up to 100,000 variants per campaign"
+            sample_requirements:
+              input: "Strain library in compatible format"
+            constraints:
+              assay_development: "May require custom assay development"
+            typical_outputs:
+              - "Hit strains"
+              - "Phenotype rankings"
+              - "Dose-response data"
+            readiness_level: "Operational"
+            tags:
+              - screening
+              - high-throughput
+              - automation
+
+      - name: "Strain Library Collection"
+        description: "Repository of characterized microbial strains"
+        capabilities:
+          - name: "Chassis Strain Access"
+            description: "Access to well-characterized chassis strains for metabolic engineering"
+            modalities:
+              - strain distribution
+              - strain characterization
+            sample_requirements:
+              mta: "Material Transfer Agreement required"
+            typical_outputs:
+              - "Characterized strains"
+              - "Growth protocols"
+              - "Genetic information"
+            readiness_level: "Operational"
+            tags:
+              - strains
+              - chassis
+              - E. coli
+              - Pseudomonas
+

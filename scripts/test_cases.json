@@ -1,0 +1,135 @@
+{
+  "test_cases": [
+    {
+      "id": "tc-001",
+      "name": "Drought-tolerant plant hormone producer",
+      "description": "I want to develop a microbial strain/consortium that is root-associated, drought tolerant, and produces a targeted plant hormone and an antifungal compound.",
+      "expected_capabilities": [
+        "strain library",
+        "phenotyping",
+        "metabolomics",
+        "proteomics",
+        "plant association"
+      ],
+      "expected_min_labs": 3,
+      "expected_min_steps": 4
+    },
+    {
+      "id": "tc-002",
+      "name": "Biofuel-producing yeast optimization",
+      "description": "Optimize a yeast strain for enhanced fatty acid production for biofuel applications. Need to identify rate-limiting enzymes and engineer them for higher activity.",
+      "expected_capabilities": [
+        "metabolic engineering",
+        "proteomics",
+        "fermentation",
+        "mass spectrometry"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 3
+    },
+    {
+      "id": "tc-003",
+      "name": "Nitrogen fixation in non-legumes",
+      "description": "Engineer a bacterial strain that can fix nitrogen and associate with grass roots (switchgrass) to reduce fertilizer requirements.",
+      "expected_capabilities": [
+        "genome engineering",
+        "plant phenotyping",
+        "nitrogen assay",
+        "rhizosphere analysis"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 4
+    },
+    {
+      "id": "tc-004",
+      "name": "Lignin degradation for biomass processing",
+      "description": "Identify and characterize microbial enzymes for efficient lignin degradation to improve biomass deconstruction for renewable chemicals.",
+      "expected_capabilities": [
+        "proteomics",
+        "enzyme characterization",
+        "structural biology",
+        "biochemistry"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 3
+    },
+    {
+      "id": "tc-005",
+      "name": "Stress-tolerant poplar microbiome",
+      "description": "Characterize the poplar root microbiome under drought stress and identify beneficial microbes for plant growth promotion.",
+      "expected_capabilities": [
+        "metagenomics",
+        "sequencing",
+        "plant phenotyping",
+        "cultivation"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 4
+    },
+    {
+      "id": "tc-006",
+      "name": "CRISPR strain library construction",
+      "description": "Build a CRISPR knockout library in Pseudomonas for systematic gene function analysis related to plant root colonization.",
+      "expected_capabilities": [
+        "DNA synthesis",
+        "CRISPR",
+        "high-throughput screening",
+        "sequencing"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 3
+    },
+    {
+      "id": "tc-007",
+      "name": "Terpenoid biosynthesis pathway",
+      "description": "Engineer E. coli to produce a novel terpenoid compound for agricultural applications. Need to identify bottleneck enzymes and optimize the pathway.",
+      "expected_capabilities": [
+        "metabolomics",
+        "protein engineering",
+        "fermentation",
+        "NMR"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 4
+    },
+    {
+      "id": "tc-008",
+      "name": "Cellulase optimization",
+      "description": "Improve cellulase enzymes from thermophilic fungi for industrial biomass processing at high temperatures.",
+      "expected_capabilities": [
+        "protein engineering",
+        "structural biology",
+        "enzyme assays",
+        "mass spectrometry"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 3
+    },
+    {
+      "id": "tc-009",
+      "name": "Phosphate solubilization microbes",
+      "description": "Screen and engineer microbes that can solubilize phosphate in soil to improve nutrient availability for crops.",
+      "expected_capabilities": [
+        "high-throughput screening",
+        "metabolomics",
+        "plant phenotyping",
+        "soil analysis"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 4
+    },
+    {
+      "id": "tc-010",
+      "name": "Antimicrobial peptide production",
+      "description": "Develop a microbial production platform for antimicrobial peptides to protect crops from fungal pathogens.",
+      "expected_capabilities": [
+        "peptide synthesis",
+        "fermentation",
+        "antimicrobial assays",
+        "proteomics"
+      ],
+      "expected_min_labs": 2,
+      "expected_min_steps": 3
+    }
+  ]
+}
