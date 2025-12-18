@@ -116,6 +116,21 @@ class IngestionService:
                     "text": page_text,
                 })
 
+        # Check if source document with same path already exists
+        result = await self.db.execute(
+            select(SourceDocument).where(
+                SourceDocument.url_or_path == str(file_path)
+            )
+        )
+        existing_doc = result.scalar_one_or_none()
+
+        if existing_doc:
+            # Delete old chunks from ChromaDB
+            await self.embedding_service.delete_document_chunks(existing_doc.id)
+            # Delete old source document
+            await self.db.delete(existing_doc)
+            await self.db.flush()
+
         # Create source document
         source_doc = SourceDocument(
             type=SourceTypeEnum.PDF.value,
@@ -185,6 +200,21 @@ class IngestionService:
         # Extract text
         text = soup.get_text(separator=' ', strip=True)
 
+        # Check if source document with same URL already exists
+        result = await self.db.execute(
+            select(SourceDocument).where(
+                SourceDocument.url_or_path == url
+            )
+        )
+        existing_doc = result.scalar_one_or_none()
+
+        if existing_doc:
+            # Delete old chunks from ChromaDB
+            await self.embedding_service.delete_document_chunks(existing_doc.id)
+            # Delete old source document
+            await self.db.delete(existing_doc)
+            await self.db.flush()
+
         # Create source document
         source_doc = SourceDocument(
             type=SourceTypeEnum.HTML.value,
@@ -247,6 +277,21 @@ class IngestionService:
         facilities_created = 0
         capabilities_created = 0
         chunk_counter = 0  # Track chunk index across all capabilities
+
+        # Check if source document with same path already exists
+        result = await self.db.execute(
+            select(SourceDocument).where(
+                SourceDocument.url_or_path == str(file_path)
+            )
+        )
+        existing_doc = result.scalar_one_or_none()
+
+        if existing_doc:
+            # Delete old chunks from ChromaDB
+            await self.embedding_service.delete_document_chunks(existing_doc.id)
+            # Delete old source document (will cascade to capabilities via foreign key)
+            await self.db.delete(existing_doc)
+            await self.db.flush()
 
         # Create source document for provenance
         source_doc = SourceDocument(
