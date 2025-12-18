@@ -1,6 +1,6 @@
 # OPAL Orchestrator
 
-A web-based chatbot that helps scientists plan cross-lab biological research projects across the OPAL (Organized Production of Agile Livelihoods) network.
+A web-based chatbot that helps scientists plan cross-lab biological research projects across the OPAL (Orchestrated Platform for Autonomous Labs) platform.
 
 ## Features
 
@@ -40,7 +40,7 @@ ANTHROPIC_AUTH_TOKEN=your_cborg_api_key_here
 ### Option 1: Run with Docker Compose
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 The application will be available at:
@@ -217,4 +217,4 @@ Internal OPAL project - see project governance for usage terms.
 
 ## Acknowledgments
 
-Built for the OPAL (Organized Production of Agile Livelihoods) network, a DOE BER-funded cross-lab initiative for sustainable biomanufacturing research.
+Built for the OPAL (Orchestrated Platform for Autonomous Labs) platform, a DOE BER-funded cross-lab initiative for sustainable biomanufacturing research.
