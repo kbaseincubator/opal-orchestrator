@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from app.config import get_settings
-from app.models.database import async_session_maker, init_db
+from app.models.database import async_session_maker, init_db, close_db
 from app.services.ingestion import get_ingestion_service
 
 
@@ -33,6 +33,9 @@ async def ingest_pdf(args):
         print(f"Successfully ingested '{args.title}'")
         print(f"  Document ID: {source_doc.id}")
         print(f"  Chunks created: {num_chunks}")
+        await ingestion_service.close_connections()
+
+    await close_db()
 
     return 0
 
@@ -51,6 +54,9 @@ async def ingest_url(args):
         print(f"Successfully ingested '{args.title}' from URL")
         print(f"  Document ID: {source_doc.id}")
         print(f"  Chunks created: {num_chunks}")
+        await ingestion_service.close_connections()
+
+    await close_db()
 
     return 0
 
@@ -73,11 +79,14 @@ async def ingest_yaml(args):
         print(f"  Labs created: {labs}")
         print(f"  Facilities created: {facilities}")
         print(f"  Capabilities created: {capabilities}")
+        await ingestion_service.close_connections()
+
+    await close_db()
 
     return 0
 
 
-def main():
+async def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
         description="OPAL Orchestrator Ingestion CLI",
@@ -120,14 +129,14 @@ Examples:
         return 1
 
     if args.command == "pdf":
-        return asyncio.run(ingest_pdf(args))
+        await ingest_pdf(args)
     elif args.command == "url":
-        return asyncio.run(ingest_url(args))
+        await ingest_url(args)
     elif args.command == "yaml":
-        return asyncio.run(ingest_yaml(args))
+        await ingest_yaml(args)
 
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(asyncio.run(main()))
