@@ -7,7 +7,7 @@ import { ChatHistory } from '@/components/Chat/ChatHistory';
 import { PlanPanel } from '@/components/Plan/PlanPanel';
 import { SourcesPanel } from '@/components/Sources/SourcesPanel';
 import type { ChatMessage, OPALPlan, SearchResult } from '@/types';
-import { sendChatMessage, getConversation } from '@/lib/api';
+import { sendChatMessage, getConversation, APIError } from '@/lib/api';
 
 const WELCOME_MESSAGE: ChatMessage = {
   role: 'assistant',
@@ -73,12 +73,15 @@ function ChatPageContent() {
           return [...prev, ...newSources];
         });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Chat error:', error);
+      let errorContent: string = error?.message;
+      if (!errorContent) {
+        errorContent = 'Sorry, I encountered an error processing your request. Please try again.';
+      }
       const errorMessage: ChatMessage = {
         role: 'assistant',
-        content:
-          'Sorry, I encountered an error processing your request. Please try again.',
+        content: errorContent,
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {

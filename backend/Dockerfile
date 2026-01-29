@@ -26,5 +26,11 @@ ENV PYTHONUNBUFFERED=1
 # Expose port
 EXPOSE 8000
 
-# Run the application
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Set default workers (can be overridden at runtime)
+ENV WEB_WORKERS=4
+
+# Create entrypoint script for variable substitution
+RUN echo '#!/bin/sh\nuvicorn app.main:app \\\n  --host 0.0.0.0 \\\n  --port 8000 \\\n  --workers ${WEB_WORKERS:-4} \\\n  --loop uvloop \\\n  --http httptools \\\n  --access-log' > /entrypoint.sh && chmod +x /entrypoint.sh
+
+# Run the application with proper concurrency settings
+ENTRYPOINT ["/entrypoint.sh"]

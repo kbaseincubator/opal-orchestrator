@@ -11,9 +11,29 @@ import type {
   SourceDocument,
 } from '@/types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+/**
+ * Get the API URL at runtime from config file.
+ * This allows the API URL to be configured via environment variables
+ * in Rancher2 ConfigMaps without rebuilding the image.
+ */
+let API_URL: string;
 
-class APIError extends Error {
+async function initializeAPIUrl(): Promise<string> {
+  try {
+    // Try to load from runtime config file first
+    const response = await fetch('/config.json');
+    if (response.ok) {
+      const config = await response.json();
+      return config.apiUrl || '/api';
+    }
+  } catch {
+    // Fall back if config file doesn't exist
+    console.error("Error loading config.json, using default API URL");
+  }
+  return process.env.NEXT_PUBLIC_API_URL || '/api';
+}
+
+export class APIError extends Error {
   constructor(
     message: string,
     public status: number,
@@ -28,8 +48,12 @@ async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const url = `${API_URL}${endpoint}`;
+  if (API_URL == undefined) {
+    API_URL = await initializeAPIUrl();
+  }
 
+  const url = `${API_URL}${endpoint}`;
+  console.log('requesting: ', endpoint, options);
   const response = await fetch(url, {
     ...options,
     headers: {

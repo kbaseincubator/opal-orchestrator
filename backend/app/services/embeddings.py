@@ -1,7 +1,6 @@
 """Embedding service using CBORG API."""
 
 import hashlib
-import json
 from pathlib import Path
 from typing import Optional
 

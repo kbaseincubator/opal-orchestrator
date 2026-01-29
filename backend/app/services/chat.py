@@ -1,20 +1,15 @@
 """Chat orchestration service for the OPAL assistant."""
 
-import json
 import logging
 import uuid
-from datetime import datetime
 from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
-
-logger = logging.getLogger(__name__)
 
 from sqlalchemy import select
 
 from app.models import Conversation
 from app.models.schemas import (
-    ChatMessage,
     ChatResponse,
     Citation,
     OPALPlan,
@@ -23,8 +18,9 @@ from app.models.schemas import (
     SearchResult,
 )
 from app.services.llm import get_llm_service
-from app.services.retrieval import RetrievalService, get_retrieval_service
+from app.services.retrieval import get_retrieval_service
 
+logger = logging.getLogger(__name__)
 
 SYSTEM_PROMPT = """You are the OPAL Orchestration Assistant, an expert AI that helps scientists plan cross-lab biological research projects across the OPAL (Orchestrated Platform for Autonomous Laboratories) network.
 
@@ -286,6 +282,7 @@ class ChatService:
             ChatResponse with message, plan (if created), and sources
         """
         # Get or create conversation from database
+        print(f"starting with message: {message}")
         conversation_record = None
         if conversation_id:
             result = await self.db.execute(
@@ -312,6 +309,8 @@ class ChatService:
         # Add user message
         conversation.append({"role": "user", "content": message})
 
+        print("past conversation lookup")
+        print("sending conversation to llm_service")
         # Generate response with tools using async tool executor
         response = await self.llm_service.generate_with_tools(
             messages=conversation,
@@ -319,6 +318,7 @@ class ChatService:
             system=SYSTEM_PROMPT,
             tool_executor=self._execute_tool,
         )
+        print(f"got result: {str(response)}")
 
         # Extract plan if created
         plan = None

@@ -1,13 +1,18 @@
 """Chat API router."""
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.database import get_db
 from app.models.schemas import ChatRequest, ChatResponse
 from app.services.chat import get_chat_service
+from app.services.llm import LLMRefusalError
+import logging
 
 router = APIRouter(prefix="/chat", tags=["chat"])
+
+logger = logging.getLogger(__name__)
+
 
 
 @router.post("", response_model=ChatResponse)
@@ -28,12 +33,25 @@ async def chat(
     Returns:
         ChatResponse with assistant message, optional plan, and sources
     """
-    chat_service = get_chat_service(db)
-    response = await chat_service.chat(
-        message=request.message,
-        conversation_id=request.conversation_id,
-    )
-    return response
+
+    try:
+        logger.info(f"chat: {request}")
+        print(request)
+        chat_service = get_chat_service(db)
+        logger.info("got chat service")
+        print("got chat service")
+        response = await chat_service.chat(
+            message=request.message,
+            conversation_id=request.conversation_id,
+        )
+        logger.info(f"got response: {response}")
+        print("got response")
+        return response
+    except LLMRefusalError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e),
+        )
 
 
 @router.post("/plan")
@@ -57,12 +75,18 @@ async def generate_plan(
     Returns:
         Generated OPAL plan
     """
-    from app.services.planner import get_planner_service
+    try:
+        from app.services.planner import get_planner_service
 
-    planner_service = get_planner_service(db)
-    plan = await planner_service.generate_plan(
-        goal=goal,
-        context=context,
-        constraints=constraints,
-    )
-    return plan
+        planner_service = get_planner_service(db)
+        plan = await planner_service.generate_plan(
+            goal=goal,
+            context=context,
+            constraints=constraints,
+        )
+        return plan
+    except LLMRefusalError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e),
+        )
