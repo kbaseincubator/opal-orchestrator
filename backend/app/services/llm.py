@@ -8,6 +8,11 @@ from anthropic import Anthropic
 from app.config import get_settings
 
 
+class LLMRefusalError(Exception):
+    """Raised when the LLM refuses to generate content."""
+    pass
+
+
 class LLMService:
     """Service for LLM interactions via CBORG."""
 
@@ -58,6 +63,10 @@ class LLMService:
             kwargs["tools"] = tools
 
         response = self.client.messages.create(**kwargs)
+
+        # Check if the LLM refused to generate content
+        if response.stop_reason == "refusal":
+            raise LLMRefusalError("LLM refused to generate content due to safety guidelines.")
 
         result = {
             "content": "",

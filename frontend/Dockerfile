@@ -28,8 +28,8 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 76761 nodejs
+RUN adduser --system --uid 76761 nextjs
 
 # Copy public folder (create if it doesn't exist in builder)
 RUN mkdir -p ./public
@@ -43,6 +43,13 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Copy entrypoint script
+COPY --chown=nextjs:nodejs docker-entrypoint.sh /app/
+RUN chmod +x /app/docker-entrypoint.sh
+
+# Create public directory with proper permissions for nextjs user to write config
+RUN mkdir -p /app/public && chown nextjs:nodejs /app/public && chmod 755 /app/public
+
 USER nextjs
 
 EXPOSE 3000
@@ -50,4 +57,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]

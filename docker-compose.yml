@@ -10,13 +10,10 @@ services:
       - ANTHROPIC_AUTH_TOKEN=${ANTHROPIC_AUTH_TOKEN}
       - LLM_MODEL=${LLM_MODEL:-anthropic/claude-sonnet-4}
       - EMBEDDING_MODEL=${EMBEDDING_MODEL:-lbl/nomic-embed-text}
-      - DATABASE_URL=sqlite:///./data/db/opal.db
-      - CHROMA_PERSIST_DIR=./data/chroma
-      - FRONTEND_URL=http://localhost:3000
       - DEBUG=false
     volumes:
-      - ./data:/app/data
-      - ./scripts/seed_data:/app/seed_data
+      - ./data:/data
+      - ./scripts/seed_data:/seed_data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
