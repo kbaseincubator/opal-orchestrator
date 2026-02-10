@@ -19,19 +19,21 @@ class Settings(BaseSettings):
     anthropic_auth_token: str = ""
 
     # Model Configuration
-    llm_model: str = "anthropic/claude-sonnet-4"
+    llm_model: str = "anthropic/claude-haiku"
     embedding_model: str = "lbl/nomic-embed-text"
 
     # Database
-    database_url: str = "sqlite:///./data/db/opal.db"
+    database_path: Path = (Path(__file__).parent.parent.parent / "data" / "db" / "opal.db").resolve()
+    database_url: str = f"sqlite:///{str(database_path)}"
 
     # ChromaDB
-    chroma_persist_dir: str = "./data/chroma"
+    chroma_persist_dir: Path = (Path(__file__).parent.parent.parent / "data" / "chroma").resolve()
 
     # Server
     host: str = "0.0.0.0"
     port: int = 8000
     debug: bool = True
+    root_path: str = ""  # For use with reverse proxies (e.g., "/service")
 
     # Frontend URL (for CORS)
     frontend_url: str = "http://localhost:3000"

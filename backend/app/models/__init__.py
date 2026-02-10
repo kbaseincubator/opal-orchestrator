@@ -8,6 +8,7 @@ from app.models.protocol import Protocol
 from app.models.resource import Resource
 from app.models.source import SourceDocument, SourceChunk
 from app.models.conversation import Conversation
+from app.models.job import Job, JobStatus
 
 __all__ = [
     "Base",
@@ -21,4 +22,6 @@ __all__ = [
     "SourceDocument",
     "SourceChunk",
     "Conversation",
+    "Job",
+    "JobStatus",
 ]

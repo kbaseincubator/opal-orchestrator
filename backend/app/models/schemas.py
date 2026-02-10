@@ -343,5 +343,40 @@ class IngestResponse(BaseModel):
     message: str
 
 
+# ============ Job Schemas ============
+
+class JobStatusEnum(str, Enum):
+    """Job status enumeration."""
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+class JobResponse(BaseModel):
+    """Schema for job response."""
+    id: str
+    job_type: str
+    status: JobStatusEnum
+    input_data: Optional[dict] = None
+    result: Optional[dict] = None
+    error: Optional[str] = None
+    progress: int = 0
+    progress_message: Optional[str] = None
+    created_at: datetime
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
+
+
+class JobSubmissionResponse(BaseModel):
+    """Schema for job submission response."""
+    job_id: str
+    status: str = "pending"
+    message: str = "Job submitted and queued for processing"
+
+
 # Update forward references
 ChatResponse.model_rebuild()

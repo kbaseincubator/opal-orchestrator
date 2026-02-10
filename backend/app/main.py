@@ -53,6 +53,7 @@ implement appropriate security measures.
     """,
     version="0.1.0",
     lifespan=lifespan,
+    root_path=settings.root_path,
 )
 
 # Configure CORS

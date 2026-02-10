@@ -3,7 +3,6 @@
 import re
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urljoin, urlparse
 
 import httpx
 import pdfplumber
@@ -23,6 +22,9 @@ class IngestionService:
     def __init__(self, db: AsyncSession):
         self.db = db
         self.embedding_service = get_embedding_service()
+
+    async def close_connections(self):
+        await self.embedding_service.close()
 
     def _chunk_text(
         self,
