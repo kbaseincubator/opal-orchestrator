@@ -13,7 +13,7 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="bg-white rounded-lg border border-opal-200 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-lg border border-opal-200 shadow-xs overflow-hidden">
       {/* Header */}
       <div
         className="px-4 py-3 flex items-center gap-3 cursor-pointer hover:bg-opal-50 transition-colors"
@@ -59,7 +59,7 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
         <div className="px-4 pb-4 border-t border-opal-100">
           {/* Hypothesis warning */}
           {step.is_hypothesis && (
-            <div className="mt-3 px-3 py-2 bg-opal-gold/10 border border-opal-gold/30 rounded text-sm text-opal-gold-dark">
+            <div className="mt-3 px-3 py-2 bg-opal-gold/10 border border-opal-gold/30 rounded-sm text-sm text-opal-gold-dark">
               This step is a hypothesis and may need verification
             </div>
           )}
@@ -108,7 +108,7 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
                 {step.constraints.map((constraint, i) => (
                   <span
                     key={i}
-                    className="px-2 py-0.5 bg-opal-100 text-opal-600 text-xs rounded"
+                    className="px-2 py-0.5 bg-opal-100 text-opal-600 text-xs rounded-sm"
                   >
                     {constraint}
                   </span>
@@ -127,7 +127,7 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
                 {step.dependencies.map((dep, i) => (
                   <span
                     key={i}
-                    className="px-2 py-0.5 bg-opal-magenta/20 text-opal-magenta-dark text-xs rounded"
+                    className="px-2 py-0.5 bg-opal-magenta/20 text-opal-magenta-dark text-xs rounded-sm"
                   >
                     Step {dep}
                   </span>
@@ -145,7 +145,7 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
               <ul className="text-sm text-opal-purple space-y-0.5">
                 {step.decision_points.map((dp, i) => (
                   <li key={i} className="flex items-start gap-1">
-                    <span className="mt-1.5 w-1.5 h-1.5 bg-opal-purple rounded-full flex-shrink-0" />
+                    <span className="mt-1.5 w-1.5 h-1.5 bg-opal-purple rounded-full shrink-0" />
                     {dp}
                   </li>
                 ))}
@@ -163,10 +163,10 @@ export function PlanStep({ step, index, totalSteps }: PlanStepProps) {
                 {step.citations.map((citation, i) => (
                   <div
                     key={i}
-                    className="text-xs text-opal-600 italic bg-opal-50 px-2 py-1 rounded border-l-2 border-opal-teal"
+                    className="text-xs text-opal-600 italic bg-opal-50 px-2 py-1 rounded-sm border-l-2 border-opal-teal"
                   >
-                    "{citation.quote.slice(0, 150)}
-                    {citation.quote.length > 150 ? '...' : ''}"
+                    &quot;{citation.quote.slice(0, 150)}
+                    {citation.quote.length > 150 ? '...' : ''}&quot;
                     {citation.source_title && (
                       <span className="not-italic font-medium ml-1 text-opal-navy">
                         - {citation.source_title}

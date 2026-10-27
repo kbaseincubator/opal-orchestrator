@@ -21,7 +21,7 @@ export function Header() {
             alt="OPAL Logo"
             width={140}
             height={50}
-            className="h-12 w-auto object-contain bg-white rounded px-2 py-1"
+            className="h-12 w-auto object-contain bg-white rounded-sm px-2 py-1"
             priority
           />
           <div className="border-l border-opal-navy-light pl-4">

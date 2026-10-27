@@ -26,7 +26,7 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
           }`}
         >
           <div
-            className={`max-w-[85%] rounded-lg px-4 py-3 shadow-sm ${
+            className={`max-w-[85%] rounded-lg px-4 py-3 shadow-xs ${
               message.role === 'user'
                 ? 'bg-opal-navy text-white'
                 : 'bg-white border border-opal-200 text-opal-800'
@@ -45,7 +45,7 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
 
       {isLoading && (
         <div className="flex justify-start">
-          <div className="bg-white border border-opal-200 rounded-lg px-4 py-3 shadow-sm">
+          <div className="bg-white border border-opal-200 rounded-lg px-4 py-3 shadow-xs">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-opal-teal rounded-full animate-bounce" />
               <div

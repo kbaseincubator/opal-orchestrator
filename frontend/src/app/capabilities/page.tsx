@@ -88,7 +88,7 @@ export default function CapabilitiesPage() {
                 placeholder="Search capabilities..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 border border-opal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opal-teal focus:border-transparent"
+                className="w-full px-4 py-2 border border-opal-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-opal-teal focus:border-transparent"
               />
             </div>
 
@@ -96,7 +96,7 @@ export default function CapabilitiesPage() {
             <select
               value={selectedLab}
               onChange={(e) => setSelectedLab(e.target.value)}
-              className="px-4 py-2 border border-opal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opal-teal bg-white"
+              className="px-4 py-2 border border-opal-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-opal-teal bg-white"
             >
               <option value="all">All Labs</option>
               {labs.map((lab) => (
@@ -110,7 +110,7 @@ export default function CapabilitiesPage() {
             <select
               value={selectedModality}
               onChange={(e) => setSelectedModality(e.target.value)}
-              className="px-4 py-2 border border-opal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opal-teal bg-white"
+              className="px-4 py-2 border border-opal-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-opal-teal bg-white"
             >
               <option value="all">All Modalities</option>
               {allModalities.map((mod) => (
@@ -193,7 +193,7 @@ function CapabilityCard({ capability }: { capability: Capability }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="bg-white rounded-lg border border-opal-200 shadow-sm hover:border-opal-purple hover:shadow-md transition-all overflow-hidden">
+    <div className="bg-white rounded-lg border border-opal-200 shadow-xs hover:border-opal-purple hover:shadow-md transition-all overflow-hidden">
       {/* Header */}
       <div
         className="px-4 py-3 cursor-pointer hover:bg-opal-50"
@@ -230,7 +230,7 @@ function CapabilityCard({ capability }: { capability: Capability }) {
             {capability.modalities.map((mod, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 bg-opal-teal/20 text-opal-teal-dark text-xs rounded font-medium"
+                className="px-2 py-0.5 bg-opal-teal/20 text-opal-teal-dark text-xs rounded-sm font-medium"
               >
                 {mod}
               </span>
@@ -269,7 +269,7 @@ function CapabilityCard({ capability }: { capability: Capability }) {
                 {capability.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="px-2 py-0.5 bg-opal-100 text-opal-600 text-xs rounded"
+                    className="px-2 py-0.5 bg-opal-100 text-opal-600 text-xs rounded-sm"
                   >
                     {tag}
                   </span>

@@ -45,13 +45,13 @@ export function MessageInput({ onSend, disabled }: MessageInputProps) {
           onKeyDown={handleKeyDown}
           placeholder="Describe your research goal..."
           disabled={disabled}
-          className="flex-1 resize-none rounded-lg border border-opal-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-opal-teal focus:border-transparent disabled:bg-opal-100 disabled:cursor-not-allowed text-opal-800 placeholder-opal-400"
+          className="flex-1 resize-none rounded-lg border border-opal-300 px-4 py-3 focus:outline-hidden focus:ring-2 focus:ring-opal-teal focus:border-transparent disabled:bg-opal-100 disabled:cursor-not-allowed text-opal-800 placeholder-opal-400"
           rows={1}
         />
         <button
           onClick={handleSubmit}
           disabled={disabled || !input.trim()}
-          className="px-6 py-3 bg-opal-navy text-white rounded-lg hover:bg-opal-navy-light transition-colors disabled:bg-opal-300 disabled:cursor-not-allowed font-medium shadow-sm"
+          className="px-6 py-3 bg-opal-navy text-white rounded-lg hover:bg-opal-navy-light transition-colors disabled:bg-opal-300 disabled:cursor-not-allowed font-medium shadow-xs"
         >
           Send
         </button>

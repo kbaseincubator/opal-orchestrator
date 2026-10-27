@@ -1,5 +1,5 @@
 # OPAL Orchestrator Frontend Dockerfile
-FROM node:20-alpine AS base
+FROM node:24.22.1-alpine3.24 AS base
 
 # Install dependencies only when needed
 FROM base AS deps

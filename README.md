@@ -15,7 +15,7 @@ A web-based chatbot that helps scientists plan cross-lab biological research pro
 ### Prerequisites
 
 - Python 3.11+
-- Node.js 18+
+- Node.js 20.9+ (Node 24 LTS recommended; the Docker image uses 24.22.1)
 - Docker & Docker Compose (optional)
 - LBL CBORG API access (for LLM and embeddings)
 
@@ -181,8 +181,8 @@ opal-orchestrator/
 
 ## Technology Stack
 
-- **Backend**: Python 3.11, FastAPI, SQLAlchemy, ChromaDB
-- **Frontend**: Next.js 14, React 18, Tailwind CSS
+- **Backend**: Python 3.11+ (Docker image uses 3.14), FastAPI, SQLAlchemy, ChromaDB
+- **Frontend**: Next.js 16, React 19, Tailwind CSS 4
 - **LLM**: LBL CBORG (Anthropic-compatible API)
 - **Embeddings**: CBORG lbl/nomic-embed-text
 - **Database**: SQLite (MVP), upgradable to PostgreSQL

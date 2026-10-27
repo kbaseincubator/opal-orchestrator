@@ -13,29 +13,29 @@ authors = [
     {name = "OPAL Team"}
 ]
 dependencies = [
-    "fastapi>=0.109.0",
-    "uvicorn[standard]>=0.27.0",
-    "sqlalchemy>=2.0.0",
-    "pydantic>=2.0.0",
-    "pydantic-settings>=2.0.0",
-    "chromadb>=0.4.0",
-    "anthropic>=0.18.0",
-    "openai>=1.0.0",
-    "httpx>=0.26.0",
-    "pdfplumber>=0.10.0",
-    "beautifulsoup4>=4.12.0",
-    "python-multipart>=0.0.6",
-    "tiktoken>=0.5.0",
-    "pyyaml>=6.0.0",
-    "aiosqlite>=0.19.0",
-    "python-dotenv>=1.0.0",
+    "fastapi>=0.162.0",
+    "uvicorn[standard]>=0.54.0",
+    "sqlalchemy[asyncio]>=2.1.6",
+    "pydantic>=2.14.1",
+    "pydantic-settings>=2.16.1",
+    "chromadb>=1.5.9",
+    "anthropic>=2.3.0",
+    "openai>=3.39.0",
+    "httpx>=0.28.1",
+    "pdfplumber>=0.11.10",
+    "beautifulsoup4>=4.15.0",
+    "python-multipart>=0.0.32",
+    "tiktoken>=0.14.0",
+    "pyyaml>=6.0.3",
+    "aiosqlite>=0.22.1",
+    "python-dotenv>=1.2.4",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0.0",
-    "pytest-asyncio>=0.21.0",
-    "httpx>=0.26.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.1",
+    "httpx>=0.28.1",
 ]
 
 [project.scripts]

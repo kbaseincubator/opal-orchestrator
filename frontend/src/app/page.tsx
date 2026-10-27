@@ -83,7 +83,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-opal-navy via-opal-navy-light to-opal-purple overflow-hidden">
+      <section className="relative bg-linear-to-br from-opal-navy via-opal-navy-light to-opal-purple overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-opal-teal rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -93,7 +93,7 @@ export default function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
           <div className="text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-opal-100 text-sm mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-xs rounded-full text-opal-100 text-sm mb-8">
               <span className="w-2 h-2 bg-opal-gold rounded-full animate-pulse" />
               DOE Biological & Environmental Research
             </div>
@@ -123,7 +123,7 @@ export default function LandingPage() {
               </Link>
               <Link
                 href="/capabilities"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg transition-colors backdrop-blur-xs"
               >
                 Browse Capabilities
               </Link>
@@ -189,7 +189,7 @@ export default function LandingPage() {
                   <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-opal-200" />
                 )}
 
-                <div className="relative bg-white rounded-xl p-6 shadow-sm border border-opal-100 text-center">
+                <div className="relative bg-white rounded-xl p-6 shadow-xs border border-opal-100 text-center">
                   {/* Step Number */}
                   <div className="w-16 h-16 bg-opal-navy text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 relative z-10">
                     {item.step}
@@ -265,7 +265,7 @@ export default function LandingPage() {
             {MEMBER_LABS.map((lab, i) => (
               <div
                 key={i}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center hover:bg-white/20 transition-colors"
+                className="bg-white/10 backdrop-blur-xs rounded-lg p-4 text-center hover:bg-white/20 transition-colors"
               >
                 <div className="text-2xl font-bold text-opal-gold mb-1">{lab.abbr}</div>
                 <div className="text-xs text-opal-200 mb-2">{lab.name}</div>
@@ -305,7 +305,7 @@ export default function LandingPage() {
                 href={`/chat?goal=${encodeURIComponent(useCase)}`}
                 className="flex items-center gap-4 p-5 bg-opal-50 rounded-lg border border-opal-200 hover:border-opal-teal hover:shadow-md transition-all group"
               >
-                <div className="w-10 h-10 bg-opal-teal/20 rounded-lg flex items-center justify-center text-opal-teal flex-shrink-0 group-hover:bg-opal-teal group-hover:text-white transition-colors">
+                <div className="w-10 h-10 bg-opal-teal/20 rounded-lg flex items-center justify-center text-opal-teal shrink-0 group-hover:bg-opal-teal group-hover:text-white transition-colors">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
@@ -318,7 +318,7 @@ export default function LandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-opal-teal to-opal-purple">
+      <section className="py-20 bg-linear-to-r from-opal-teal to-opal-purple">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Plan Your Research?
@@ -344,7 +344,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Image src="/opal-logo.jpg" alt="OPAL" width={32} height={32} className="rounded" />
+              <Image src="/opal-logo.jpg" alt="OPAL" width={32} height={32} className="rounded-sm" />
               <span className="text-opal-200 text-sm">
                 OPAL Orchestrator - Orchestrated Platform for Autonomous Laboratories
               </span>
