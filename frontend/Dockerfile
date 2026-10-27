@@ -16,10 +16,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Set build-time environment variables
-ARG NEXT_PUBLIC_API_URL=http://localhost:8000
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -56,5 +52,7 @@ EXPOSE 3000
 
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+# Backend address used by the /api proxy; override per deployment.
+ENV API_URL="http://localhost:8000"
 
 CMD ["node", "server.js"]

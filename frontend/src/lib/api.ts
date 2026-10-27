@@ -11,7 +11,9 @@ import type {
   SourceDocument,
 } from '@/types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// All requests go through the same-origin proxy at /api (see src/app/api/[...path]/route.ts),
+// which forwards to the backend named by the server-side API_URL environment variable.
+const API_URL = '/api';
 
 class APIError extends Error {
   constructor(

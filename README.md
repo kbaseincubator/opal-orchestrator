@@ -78,6 +78,14 @@ npm install
 npm run dev
 ```
 
+The frontend never calls the backend directly from the browser. All requests go
+to `/api/...` on the frontend's own origin, and the Next.js server proxies them
+to the backend named by the `API_URL` environment variable (default
+`http://localhost:8000`). When deploying the frontend container, set `API_URL`
+to the backend's address as seen from the frontend container, for example
+`http://opal-backend:8000` for an in-cluster service. No rebuild is needed to
+change it.
+
 ### Seed the Capability Registry
 
 Before using the chatbot, load the seed data:
