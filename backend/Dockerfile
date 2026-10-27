@@ -13,6 +13,13 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Build metadata (passed by CI; harmless defaults for local builds)
+ARG GIT_COMMIT=unknown
+ARG BUILD_DATE=unknown
+LABEL org.opencontainers.image.source="https://github.com/kbaseincubator/opal-orchestrator" \
+      org.opencontainers.image.revision="$GIT_COMMIT" \
+      org.opencontainers.image.created="$BUILD_DATE"
+
 # Copy application code
 COPY . .
 
