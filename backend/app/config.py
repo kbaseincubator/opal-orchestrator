@@ -20,6 +20,10 @@ class Settings(BaseSettings):
 
     # Model Configuration
     llm_model: str = "anthropic/claude-sonnet-4"
+    # Anthropic API version header. SDK 2.x defaults to 2026-10-21, which
+    # CBORG's LiteLLM proxy forwards to Vertex AI where it conflicts with the
+    # vertex-2023-10-16 body version. Pin the older version until CBORG strips it.
+    anthropic_api_version: str = "2023-06-01"
     embedding_model: str = "lbl/nomic-embed-text"
 
     # Database

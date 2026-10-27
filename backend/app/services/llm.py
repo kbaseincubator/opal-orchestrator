@@ -22,6 +22,7 @@ class LLMService:
             self._client = Anthropic(
                 api_key=self.settings.anthropic_auth_token,
                 base_url=self.settings.anthropic_base_url,
+                default_headers={"anthropic-version": self.settings.anthropic_api_version},
             )
         return self._client
 
