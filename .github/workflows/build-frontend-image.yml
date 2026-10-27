@@ -14,19 +14,10 @@ on:
       - "frontend/**"
       - ".github/workflows/build-frontend-image.yml"
   workflow_dispatch:
-    inputs:
-      api_url:
-        description: "Backend URL baked into the frontend bundle (NEXT_PUBLIC_API_URL)"
-        required: false
-        type: string
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: kbaseincubator/opal-orchestrator-frontend
-  # Precedence: manual dispatch input > repository variable NEXT_PUBLIC_API_URL > localhost.
-  # Next.js inlines this into the client bundle at build time, so it cannot be
-  # changed at container start. Set the repository variable to the deployed backend URL.
-  NEXT_PUBLIC_API_URL: ${{ inputs.api_url || vars.NEXT_PUBLIC_API_URL || 'http://localhost:8000' }}
 
 jobs:
   build-and-push:
@@ -61,7 +52,6 @@ jobs:
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=branch
-            type=ref,event=pr
             type=sha
 
       - name: Build and push Docker image
@@ -74,6 +64,5 @@ jobs:
           build-args: |
             GIT_COMMIT=${{ github.sha }}
             BUILD_DATE=${{ env.BUILD_DATE }}
-            NEXT_PUBLIC_API_URL=${{ env.NEXT_PUBLIC_API_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
