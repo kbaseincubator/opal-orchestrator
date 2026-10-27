@@ -1,6 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-opal-50: #f7fafc;
+  --color-opal-100: #edf2f7;
+  --color-opal-200: #e2e8f0;
+  --color-opal-300: #cbd5e0;
+  --color-opal-400: #a0aec0;
+  --color-opal-500: #718096;
+  --color-opal-600: #4a5568;
+  --color-opal-700: #2d3748;
+  --color-opal-800: #1a202c;
+  --color-opal-900: #171923;
+  --color-opal-navy: #1a365d;
+  --color-opal-navy-light: #2c5282;
+  --color-opal-navy-dark: #0f2744;
+  --color-opal-purple: #6b46c1;
+  --color-opal-purple-light: #805ad5;
+  --color-opal-purple-dark: #553c9a;
+  --color-opal-magenta: #d53f8c;
+  --color-opal-magenta-light: #ed64a6;
+  --color-opal-magenta-dark: #b83280;
+  --color-opal-teal: #319795;
+  --color-opal-teal-light: #38b2ac;
+  --color-opal-teal-dark: #285e61;
+  --color-opal-gold: #d69e2e;
+  --color-opal-gold-light: #ecc94b;
+  --color-opal-gold-dark: #b7791f;
+
+  --background-image-opal-gradient: linear-gradient(
+    135deg,
+    #1a365d 0%,
+    #2c5282 50%,
+    #319795 100%
+  );
+  --background-image-opal-gradient-light: linear-gradient(
+    135deg,
+    #edf2f7 0%,
+    #e2e8f0 100%
+  );
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root {
   --opal-navy: #1a365d;
@@ -75,11 +131,11 @@ body {
 }
 
 .markdown-content code {
-  @apply bg-opal-100 px-1 py-0.5 rounded text-sm text-opal-purple;
+  @apply bg-opal-100 px-1 py-0.5 rounded-sm text-sm text-opal-purple;
 }
 
 .markdown-content pre {
-  @apply bg-opal-100 p-3 rounded overflow-x-auto mb-2 border border-opal-200;
+  @apply bg-opal-100 p-3 rounded-sm overflow-x-auto mb-2 border border-opal-200;
 }
 
 .markdown-content blockquote {
@@ -132,7 +188,7 @@ body {
 
 /* Input styling */
 .input-primary {
-  @apply border border-opal-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-opal-teal focus:border-transparent;
+  @apply border border-opal-300 rounded-lg px-4 py-2 focus:outline-hidden focus:ring-2 focus:ring-opal-teal focus:border-transparent;
 }
 
 /* Accent highlights */

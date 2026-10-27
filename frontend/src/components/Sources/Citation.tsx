@@ -19,7 +19,7 @@ export function Citation({ source }: CitationProps) {
   const hasMetadata = page || capabilityName;
 
   return (
-    <div className="bg-opal-50 rounded border border-opal-200 p-2 hover:border-opal-teal transition-colors">
+    <div className="bg-opal-50 rounded-sm border border-opal-200 p-2 hover:border-opal-teal transition-colors">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
           <p className="text-xs text-opal-700">
@@ -36,9 +36,9 @@ export function Citation({ source }: CitationProps) {
             </button>
           )}
         </div>
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <span
-            className="inline-block px-1.5 py-0.5 bg-opal-teal/20 text-opal-teal-dark text-xs rounded font-medium"
+            className="inline-block px-1.5 py-0.5 bg-opal-teal/20 text-opal-teal-dark text-xs rounded-sm font-medium"
             title={`Relevance score: ${(source.score * 100).toFixed(0)}%`}
           >
             {(source.score * 100).toFixed(0)}%
@@ -51,7 +51,7 @@ export function Citation({ source }: CitationProps) {
             <span className="text-xs text-opal-500">Page {String(page)}</span>
           ) : null}
           {capabilityName ? (
-            <span className="text-xs bg-opal-purple/20 text-opal-purple-dark px-1 rounded">
+            <span className="text-xs bg-opal-purple/20 text-opal-purple-dark px-1 rounded-sm">
               {capabilityName}
             </span>
           ) : null}

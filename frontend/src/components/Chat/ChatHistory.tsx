@@ -99,7 +99,7 @@ export function ChatHistory({
           <h2 className="font-semibold">Chat History</h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-opal-navy-light rounded transition-colors"
+            className="p-1 hover:bg-opal-navy-light rounded-sm transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -169,7 +169,7 @@ export function ChatHistory({
                     </div>
                     <button
                       onClick={(e) => handleDelete(conv.id, e)}
-                      className={`p-1.5 rounded transition-colors flex-shrink-0 ${
+                      className={`p-1.5 rounded transition-colors shrink-0 ${
                         deleteConfirm === conv.id
                           ? 'bg-opal-magenta text-white'
                           : 'text-opal-400 hover:text-opal-magenta hover:bg-opal-100'
